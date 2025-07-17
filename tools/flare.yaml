@@ -3,7 +3,7 @@ networks:
   br-public:
     external: true
 services:
-  flare:
+  flare.qw:
     networks:
       - "br-public"
     image: soulteary/flare:0.5.2
