@@ -1,0 +1,22 @@
+version: '3.6'
+networks:
+  br-public:
+    external: true
+services:
+  flare:
+    networks:
+      - "br-public"
+    image: soulteary/flare
+    restart: always
+    container_name: flare
+    command: flare --nologin=0
+    environment:
+      # 如需开启用户登陆模式，需要先设置 `nologin` 启动参数为 `0`
+      # 如开启 `nologin`，未设置 FLARE_USER，则默认用户为 `flare`
+      FLARE_USER: "${FLARE_USER}"
+      # 指定你自己的账号密码，如未设置 `FLARE_USER`，则会默认生成密码并展示在应用启动日志中
+      FLARE_PASS: "${FLARE_PASS}"
+    ports:
+      - "${FLARE_PORT}:5005"
+    volumes:
+      - '${DATA_ROOT}/flare:/app'
