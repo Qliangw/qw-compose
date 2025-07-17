@@ -1,0 +1,17 @@
+version: '3'
+
+networks:
+  br-secure:
+    external: true
+services:
+  # 通过 nginx 与该服务在一个networks下，可配置 http://vaultwarden.qw:80 进行访问
+  vaultwarden.qw:
+    networks:
+      - "br-secure"
+    image: vaultwarden/server:1.34.1
+    #ports:
+    #  - 50182:80
+    restart: always
+    container_name: vaultwarden
+    volumes:
+      - '${DATA_ROOT}/vaultwarden/data:/data'
