@@ -1,9 +1,9 @@
 version: "3"
 
 networks:
-  ${BR_PUBLIC}:
+  br-public:
     external: true
-  ${BR_SECURE}:
+  br-secure:
     external: true
 
 services:
@@ -12,8 +12,8 @@ services:
     container_name: npm-nginx
     restart: unless-stopped
     networks:
-      - "${BR_PUBLIC}"
-      - "${BR_SECURE}"
+      - "br-public"
+      - "br-secure"
     ports:
       # These ports are in format <host-port>:<container-port>
       - '${NPM_HTTP_PORT}:80' # Public HTTP Port
@@ -40,7 +40,7 @@ services:
     image: postgres:17.4-bookworm
     container_name: npm-db
     networks:
-      - "${BR_SECURE}"
+      - "br-secure"
     environment:
       POSTGRES_USER: '${DB_USER}'
       POSTGRES_PASSWORD: '${DB_PASSWORD}'
