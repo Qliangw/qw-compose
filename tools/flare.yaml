@@ -6,7 +6,7 @@ services:
   flare:
     networks:
       - "br-public"
-    image: soulteary/flare
+    image: soulteary/flare:0.5.2
     restart: always
     container_name: flare
     command: flare --nologin=0
