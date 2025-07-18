@@ -2,8 +2,10 @@ version: "3"
 
 networks:
   br-public:
+    name: "${NPM_NETWORK}"
     external: true
   br-secure:
+    name: "${NPM_DB_NETWORK}"
     external: true
 
 services:
