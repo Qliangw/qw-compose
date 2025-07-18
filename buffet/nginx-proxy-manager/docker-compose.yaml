@@ -26,10 +26,10 @@ services:
     environment:
       # Postgres parameters:
       DB_POSTGRES_HOST: 'db.npm.qw'
-      DB_POSTGRES_PORT: '${DB_PORT}'
-      DB_POSTGRES_USER: '${DB_USER}'
-      DB_POSTGRES_PASSWORD: '${DB_PASSWORD}'
-      DB_POSTGRES_NAME: '${DB_NAME}'
+      DB_POSTGRES_PORT: '${NPM_DB_PORT}'
+      DB_POSTGRES_USER: '${NPM_DB_USER}'
+      DB_POSTGRES_PASSWORD: '${NPM_DB_PASSWORD}'
+      DB_POSTGRES_NAME: '${NPM_DB_NAME}'
       # Uncomment this if IPv6 is not enabled on your host
       # DISABLE_IPV6: 'true'
     volumes:
