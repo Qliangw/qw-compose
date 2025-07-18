@@ -1,12 +1,15 @@
 version: '3.6'
 networks:
-  br-public:
+  outside:
+    name: "${NETWORK_OUTSIDE}"
     external: true
 services:
   flare.qw:
     networks:
-      - "br-public"
+      - outside
     image: soulteary/flare:0.5.2
+    labels:
+      - "com.docker.compose.project=qw-flare"
     restart: always
     container_name: flare
     command: flare --nologin=0
