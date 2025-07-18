@@ -2,6 +2,7 @@ version: '3'
 
 networks:
   br-secure:
+    name: "${V_NETWORK}"
     external: true
 services:
   # 通过 nginx 与该服务在一个networks下，可配置 http://vaultwarden.qw:80 进行访问
