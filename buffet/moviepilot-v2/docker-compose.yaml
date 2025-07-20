@@ -36,6 +36,7 @@ services:
       - 'PGID=${MP_ENV_PGID}'
       - 'UMASK=${MP_ENV_UMASK}'
       - 'TZ=${MP_ENV_TZ}'
+      - 'PROXY_HOST=${MP_ENV_PROXY_HOST}'
       # - 'AUTH_SITE=iyuu'  # v2.0.7+版本以后，可不设置，直接通过 UI 配置
       # - 'IYUU_SIGN=xxxx'
       - 'SUPERUSER=${MP_ENV_ADMIN}'  # 设置超级用户
