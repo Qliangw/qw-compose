@@ -1,0 +1,43 @@
+version: '3'
+
+networks:
+  moviepilot:
+    name: "${MP_NETWORK}"
+    external: true
+
+services:
+  moviepilot.qw:
+    restart: always
+    image: jxxghp/moviepilot-v2:latest
+
+    stdin_open: true
+    tty: true
+    container_name: moviepilot-v2
+    # hostname: moviepilot-v2
+
+    # network_mode: host
+    networks:
+    - moviepilot
+
+    ports:
+     - '${MP_NGINX_PORT}:3000'
+     - '${MP_API_PORT}:3001'
+
+    volumes:
+      - '${MP_PATH_MEDIA}:/media/entmt1'
+      - '${MP_PATH_CONFIG}:/config'
+      - '${MP_PATH_CORE}:/moviepilot/.cache/ms-playwright'
+      - '${MP_PATH_DOCKER_SOCK}:/var/run/docker.sock:ro'
+
+    environment:
+      - 'NGINX_PORT=3000'
+      - 'PORT=3001'
+      - 'PUID=${MP_ENV_PUID}'
+      - 'PGID=${MP_ENV_PGID}'
+      - 'UMASK=${MP_ENV_UMASK}'
+      - 'TZ=${MP_ENV_TZ}'
+      # - 'AUTH_SITE=iyuu'  # v2.0.7+版本以后，可不设置，直接通过 UI 配置
+      # - 'IYUU_SIGN=xxxx'
+      - 'SUPERUSER=${MP_ENV_ADMIN}'  # 设置超级用户
+      # - 'API_TOKEN=无需手动配置，系统会自动生成。如果需要自定义配置，必须为16位以上的复杂字符串'
+
