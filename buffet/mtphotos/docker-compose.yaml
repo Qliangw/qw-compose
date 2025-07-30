@@ -1,0 +1,25 @@
+version: "3"
+
+networks:
+  net-mtmt:
+    name: "${V_NETWORK}"
+    external: true
+
+services:
+  mtphotos.qw:
+    image: registry.cn-hangzhou.aliyuncs.com/mtphotos/mt-photos:latest
+    networks:
+      - "net-mtmt"
+    container_name: mtphotos
+    restart: always
+    ports:
+      - '${MT_PORT}:8063'
+    volumes:
+      - '${MT_PATH_CONFIG}:/config'
+      - '${MT_PATH_UPLOAD}:/upload'
+      - '${MT_PATH_VOL0}:${MT_DPATH_VOL0}'
+    environment:
+      - 'TZ=${MT_ENV_TZ}'
+      - 'LANG=${MT_ENV_LANG}'
+    dns:
+      - '${MT_CONF_DNS}'
