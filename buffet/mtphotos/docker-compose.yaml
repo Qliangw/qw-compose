@@ -7,7 +7,7 @@ networks:
 
 services:
   mtphotos.qw:
-    image: registry.cn-hangzhou.aliyuncs.com/mtphotos/mt-photos:latest
+    image: mtphotos/mt-photos:latest
     networks:
       - "net-mtmt"
     container_name: mtphotos
